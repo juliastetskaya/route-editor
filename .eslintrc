@@ -4,6 +4,7 @@
     "airbnb"
   ],
   "rules": {
-    "no-console": 0
+    "no-console": 0,
+    "react/state-in-constructor": 0
   }
 }
