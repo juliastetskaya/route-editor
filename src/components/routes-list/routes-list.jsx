@@ -7,9 +7,9 @@ export default class RoutesList extends Component {
     const { routes } = this.props;
 
     return (
-      <ul>
+      <ul className="list-group">
         {routes.map(({ id, address }) => (
-          <li key={id}>
+          <li key={id} className="list-group-item">
             <RoutesListItem route={address} />
           </li>
         ))}
