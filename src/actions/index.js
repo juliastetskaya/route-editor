@@ -1,9 +1,17 @@
-/* eslint-disable import/prefer-default-export */
-const addNewRoute = (newRoute) => ({
-  type: 'ADD_NEW_ROUTE',
-  payload: newRoute,
+const routeAddedToList = (event, newRoute) => {
+  event.preventDefault();
+  return ({
+    type: 'ROUTE_ADDED_TO_LIST',
+    payload: newRoute,
+  });
+};
+
+const newRouteEntered = (route) => ({
+  type: 'NEW_ROUTE_ENTERED',
+  payload: route,
 });
 
 export {
-  addNewRoute,
+  routeAddedToList,
+  newRouteEntered,
 };

@@ -1,4 +1,5 @@
 const initialState = {
+  route: '',
   routes: [
     {
       id: 1,
@@ -16,11 +17,22 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD_NEW_ROUTE':
+  const { type, payload } = action;
+
+  switch (type) {
+    case 'ROUTE_ADDED_TO_LIST': {
+      const { routes } = state;
+      const newId = routes.length + 1;
       return {
         ...state,
-        routes: [...state.routes, action.payload],
+        route: '',
+        routes: [...routes, { id: newId, address: payload }],
+      };
+    }
+    case 'NEW_ROUTE_ENTERED':
+      return {
+        ...state,
+        route: payload,
       };
     default:
       return state;
