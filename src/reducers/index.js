@@ -22,11 +22,20 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case 'ROUTE_ADDED_TO_LIST': {
       const { routes } = state;
-      const newId = routes.length + 1;
+      const { length } = routes;
+      const newId = length > 0 ? routes[length - 1].id + 1 : 1;
       return {
         ...state,
         route: '',
         routes: [...routes, { id: newId, address: payload }],
+      };
+    }
+    case 'ROUTE_REMOVED_FROM_LIST': {
+      const { routes } = state;
+      const newRoutes = routes.filter(({ id }) => id !== payload);
+      return {
+        ...state,
+        routes: newRoutes,
       };
     }
     case 'NEW_ROUTE_ENTERED':

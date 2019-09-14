@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { routeAddedToList, newRouteEntered } from '../../actions';
 
 const TextBox = ({ route, onSubmit, onChange }) => (
-  <form className="form-group" onSubmit={(event) => onSubmit(event, route)}>
+  <form
+    className="form-group"
+    onSubmit={(event) => onSubmit(event, route)}
+  >
     <input
       value={route}
       onChange={({ target }) => onChange(target.value)}

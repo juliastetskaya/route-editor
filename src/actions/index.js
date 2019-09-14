@@ -6,6 +6,11 @@ const routeAddedToList = (event, newRoute) => {
   });
 };
 
+const routeRemovedFromList = (routeId) => ({
+  type: 'ROUTE_REMOVED_FROM_LIST',
+  payload: routeId,
+});
+
 const newRouteEntered = (route) => ({
   type: 'NEW_ROUTE_ENTERED',
   payload: route,
@@ -13,5 +18,6 @@ const newRouteEntered = (route) => ({
 
 export {
   routeAddedToList,
+  routeRemovedFromList,
   newRouteEntered,
 };
