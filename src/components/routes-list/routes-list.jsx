@@ -5,15 +5,18 @@ import RoutesListItem from '../routes-list-item';
 export default class RoutesList extends Component {
   render() {
     const { routes } = this.props;
+    console.log(routes.length);
 
-    return (
-      <ul className="list-group">
-        {routes.map(({ id, address }) => (
-          <li key={id} className="list-group-item">
-            <RoutesListItem route={address} />
-          </li>
-        ))}
-      </ul>
-    );
+    return routes.length > 0
+      ? (
+        <ul className="list-group">
+          {routes.map(({ id, address }) => (
+            <li key={id} className="list-group-item">
+              <RoutesListItem route={address} />
+            </li>
+          ))}
+        </ul>
+      )
+      : null;
   }
 }

@@ -4,8 +4,8 @@ import RoutesList from '../routes-list';
 import TextBox from '../text-box';
 
 const App = () => (
-  <main role="main" className="container flex">
-    <div className="jumbotron">
+  <main role="main" className="container">
+    <div className="container-routes">
       <TextBox />
       <RoutesList routes={[
         {
