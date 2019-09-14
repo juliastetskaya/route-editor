@@ -1,11 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RoutesListItem from '../routes-list-item';
 
-export default class RoutesList extends Component {
+class RoutesList extends Component {
   render() {
     const { routes } = this.props;
-    console.log(routes.length);
 
     return routes.length > 0
       ? (
@@ -20,3 +20,7 @@ export default class RoutesList extends Component {
       : null;
   }
 }
+
+const mapStateToProps = ({ routes }) => ({ routes });
+
+export default connect(mapStateToProps)(RoutesList);

@@ -1,5 +1,18 @@
 const initialState = {
-  routes: [],
+  routes: [
+    {
+      id: 1,
+      address: 'Матросова',
+    },
+    {
+      id: 2,
+      address: 'Ленина',
+    },
+    {
+      id: 3,
+      address: 'Комсомольская',
+    },
+  ],
 };
 
 const reducer = (state = initialState, action) => {
