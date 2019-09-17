@@ -10,4 +10,13 @@ export default class RouteEditorService {
       });
     });
   }
+
+  getCoords(address) {
+    return window.ymaps.geocode(address, {
+      results: 1,
+    }).then((res) => {
+      const firstGeoObject = res.geoObjects.get(0);
+      return firstGeoObject.geometry.getCoordinates();
+    });
+  }
 }

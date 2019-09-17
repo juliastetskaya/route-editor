@@ -1,9 +1,13 @@
-const routeAddedToList = (event, newRoute) => {
+const routeAddedToList = (event) => {
   event.preventDefault();
-  return ({
-    type: 'ROUTE_ADDED_TO_LIST',
-    payload: newRoute,
-  });
+  return (dispatch) => (newRoute, routeEditorService) => {
+    routeEditorService.getCoords(newRoute)
+      .then((coordinates) => dispatch({
+        type: 'ROUTE_ADDED_TO_LIST',
+        payload: { address: newRoute, coordinates },
+      }))
+      .catch(() => console.log('Не удалось определить координаты объекта!'));
+  };
 };
 
 const routeRemovedFromList = (routeId) => ({
