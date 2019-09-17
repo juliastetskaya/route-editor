@@ -1,5 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import withRouteEditorService from '../hoc';
 
-const Map = () => <div id="map" />;
+class Map extends Component {
+  componentDidMount() {
+    const { routeEditorService } = this.props;
+    routeEditorService.setMap();
+  }
 
-export default Map;
+  render() {
+    return <div id="map" />;
+  }
+}
+
+export default withRouteEditorService()(Map);

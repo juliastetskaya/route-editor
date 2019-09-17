@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { routeAddedToList, newRouteEntered } from '../../actions';
+import { routeAddedToList, newRouteEntered, addMapToStore } from '../../actions';
+import withRouteEditorService from '../hoc';
 
-const TextBox = ({ route, onSubmit, onChange }) => (
+const TextBox = ({
+  route, onSubmit, onChange, routeEditorService,
+}) => (
   <form
     className="form-group"
-    onSubmit={(event) => onSubmit(event, route)}
+    onSubmit={(event) => onSubmit(event, route, routeEditorService)}
   >
     <input
       value={route}
@@ -20,8 +23,11 @@ const TextBox = ({ route, onSubmit, onChange }) => (
 const mapStateToProps = ({ route }) => ({ route });
 
 const mapDispatchToProps = {
-  onSubmit: routeAddedToList,
+  onSubmit: (event, route, routeService) => (dispatch) => {
+    dispatch(routeAddedToList(event, route));
+    dispatch(addMapToStore(routeService, route));
+  },
   onChange: newRouteEntered,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TextBox);
+export default withRouteEditorService()(connect(mapStateToProps, mapDispatchToProps)(TextBox));

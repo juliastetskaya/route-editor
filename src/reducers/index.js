@@ -3,15 +3,15 @@ const initialState = {
   routes: [
     {
       id: 1,
-      address: 'Матросова',
+      address: 'Москва, Матросова, 7к1',
     },
     {
       id: 2,
-      address: 'Ленина',
+      address: 'Москва, Ленина, 5',
     },
     {
       id: 3,
-      address: 'Комсомольская',
+      address: 'Москва, Комсомольская, 15',
     },
   ],
 };

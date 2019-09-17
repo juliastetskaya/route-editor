@@ -9,12 +9,11 @@ import { RouteEditorServiceProvider } from './components/route-editor-service-co
 import store from './store';
 
 const routeEditorService = new RouteEditorService();
-const map = routeEditorService.getMap();
 
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundary>
-      <RouteEditorServiceProvider value={map}>
+      <RouteEditorServiceProvider value={routeEditorService}>
         <App />
       </RouteEditorServiceProvider>
     </ErrorBoundary>
