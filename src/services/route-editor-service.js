@@ -8,6 +8,7 @@ export default class RouteEditorService {
         zoom: 11,
         controls: ['zoomControl'],
       });
+      this.suggestView = new window.ymaps.SuggestView('suggest');
     });
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { routeAddedToList, newRouteEntered } from '../../actions';
+import { fetchCoordinates, newRouteEntered } from '../../actions';
 import withRouteEditorService from '../hoc';
 
 const TextBox = ({
@@ -8,7 +8,7 @@ const TextBox = ({
 }) => (
   <form
     className="form-group"
-    onSubmit={(event) => onSubmit(event)(route, routeEditorService)}
+    onSubmit={(e) => onSubmit(e)(route, routeEditorService)}
   >
     <input
       value={route}
@@ -16,6 +16,7 @@ const TextBox = ({
       className="form-control mr-sm-5"
       type="text"
       placeholder="Введите новую точку маршрута"
+      id="suggest"
     />
   </form>
 );
@@ -23,7 +24,7 @@ const TextBox = ({
 const mapStateToProps = ({ route }) => ({ route });
 
 const mapDispatchToProps = {
-  onSubmit: routeAddedToList,
+  onSubmit: fetchCoordinates,
   onChange: newRouteEntered,
 };
 
