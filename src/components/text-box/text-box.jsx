@@ -4,15 +4,16 @@ import { fetchCoordinates, newRouteEntered } from '../../actions';
 import withRouteEditorService from '../hoc';
 
 const TextBox = ({
-  route, onSubmit, onChange, routeEditorService,
+  route, addNewRoute, enterNewRoute, routeEditorService,
 }) => (
   <form
     className="form-group"
-    onSubmit={(e) => onSubmit(e)(route, routeEditorService)}
+    onSubmit={(e) => addNewRoute(e)(route, routeEditorService)}
   >
     <input
       value={route}
-      onChange={({ target }) => onChange(target.value)}
+      onChange={({ target }) => enterNewRoute(target.value)}
+      onKeyUp={({ target }) => enterNewRoute(target.value)}
       className="form-control mr-sm-5"
       type="text"
       placeholder="Введите новую точку маршрута"
@@ -24,8 +25,8 @@ const TextBox = ({
 const mapStateToProps = ({ route }) => ({ route });
 
 const mapDispatchToProps = {
-  onSubmit: fetchCoordinates,
-  onChange: newRouteEntered,
+  addNewRoute: fetchCoordinates,
+  enterNewRoute: newRouteEntered,
 };
 
 export default withRouteEditorService()(connect(mapStateToProps, mapDispatchToProps)(TextBox));
